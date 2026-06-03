@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BIB_PATH = ROOT / "bibliography" / "references.bib"
 PAPERS_PATH = ROOT / "papers" / "papers.tsv"
-README_LIST_PATH = ROOT / "papers" / "paper_list.md"
+README_LIST_PATH = ROOT / "paper_list.md"
 
 
 CATEGORIES = [

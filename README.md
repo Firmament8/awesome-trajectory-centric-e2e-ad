@@ -6,23 +6,20 @@ This repository is organized as a public reading map rather than a claim of exha
 
 > An Overview of Trajectory-Centric End-to-End Autonomous Driving under Planning-Oriented Evaluation for AI-Enabled Transportation Systems
 
-## Principles
+## Maintenance Notes
 
-- **Truthfulness first.** Code, project, and dataset links are not guessed. They are added only when explicitly verified.
-- **Traceable metadata.** Paper titles, authors, venues, years, DOI, and arXiv IDs come from `bibliography/references.bib`.
-- **Link source labels.** `DOI`, `arXiv`, and `URL` are direct links derived from BibTeX fields. Entries without a direct link are marked as search-only.
-- **Easy maintenance.** The machine-readable paper table is stored in `papers/papers.tsv`; the Markdown list can be regenerated with `tools/generate_papers.py`.
+Paper metadata is generated from `bibliography/references.bib`. DOI, arXiv, and URL links are shown when they are present in the BibTeX source; entries without a direct link are marked as search-only. Code, project, and dataset links can be added later after checking the paper page, author page, or official repository.
 
 ## Contents
 
-- [Surveys and Positioning](papers/paper_list.md#surveys-and-positioning)
-- [VLM, VLA, Language, and Reasoning](papers/paper_list.md#vlm-vla-language-and-reasoning)
-- [World Models, Rollout, and Generative Simulation](papers/paper_list.md#world-models-rollout-and-generative-simulation)
-- [Planning-Oriented Evaluation and Benchmarks](papers/paper_list.md#planning-oriented-evaluation-and-benchmarks)
-- [BEV, Occupancy, and Perception](papers/paper_list.md#bev-occupancy-and-perception)
-- [Trajectory Prediction and End-to-End Planning](papers/paper_list.md#trajectory-prediction-and-end-to-end-planning)
-- [Background: Intelligent Transportation and Autonomous Driving](papers/paper_list.md#background-intelligent-transportation-and-autonomous-driving)
-- [Other Relevant Papers](papers/paper_list.md#other-relevant-papers)
+- [Surveys and Positioning](paper_list.md#surveys-and-positioning)
+- [VLM, VLA, Language, and Reasoning](paper_list.md#vlm-vla-language-and-reasoning)
+- [World Models, Rollout, and Generative Simulation](paper_list.md#world-models-rollout-and-generative-simulation)
+- [Planning-Oriented Evaluation and Benchmarks](paper_list.md#planning-oriented-evaluation-and-benchmarks)
+- [BEV, Occupancy, and Perception](paper_list.md#bev-occupancy-and-perception)
+- [Trajectory Prediction and End-to-End Planning](paper_list.md#trajectory-prediction-and-end-to-end-planning)
+- [Background: Intelligent Transportation and Autonomous Driving](paper_list.md#background-intelligent-transportation-and-autonomous-driving)
+- [Other Relevant Papers](paper_list.md#other-relevant-papers)
 
 ## Visual Map
 
@@ -38,18 +35,20 @@ The following figures are copied from the survey assets for navigation and topic
 
 ## Paper List
 
-See [papers/paper_list.md](papers/paper_list.md) for the full categorized list.
+See [paper_list.md](paper_list.md) for the full categorized list.
 
 ## Repository Structure
 
 ```text
 .
 |-- README.md
+|-- paper_list.md
 |-- bibliography/
 |   `-- references.bib
 |-- papers/
-|   |-- paper_list.md
-|   `-- papers.tsv
+|   |-- link_check.tsv
+|   |-- papers.tsv
+|   `-- README.md
 |-- assets/
 |   `-- figures/
 |-- tools/
