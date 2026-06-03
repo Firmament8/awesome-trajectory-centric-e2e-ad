@@ -8,6 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 BIB_PATH = ROOT / "bibliography" / "references.bib"
 PAPERS_PATH = ROOT / "papers" / "papers.tsv"
 README_LIST_PATH = ROOT / "paper_list.md"
+README_PATH = ROOT / "README.md"
+README_LIST_START = "<!-- BEGIN PAPER_LIST -->"
+README_LIST_END = "<!-- END PAPER_LIST -->"
 
 
 CATEGORIES = [
@@ -241,6 +244,24 @@ def format_item(entry: dict[str, str]) -> str:
     return f"- **{title}**. {authors} et al., {where}, {year}.{link_text} `bib:{entry['key']}`"
 
 
+def sync_readme(list_lines: list[str]) -> None:
+    readme = README_PATH.read_text(encoding="utf-8")
+    embedded_lines = list_lines[2:]
+    block = "\n".join([README_LIST_START, "", *embedded_lines, README_LIST_END])
+    pattern = re.compile(
+        rf"{re.escape(README_LIST_START)}.*?{re.escape(README_LIST_END)}",
+        flags=re.S,
+    )
+    if pattern.search(readme):
+        updated = pattern.sub(block, readme)
+    else:
+        updated = readme.replace(
+            "See [paper_list.md](paper_list.md) for the full categorized list.",
+            block,
+        )
+    README_PATH.write_text(updated, encoding="utf-8")
+
+
 def main() -> None:
     entries = split_entries(BIB_PATH.read_text(encoding="utf-8"))
     rows = []
@@ -288,6 +309,7 @@ def main() -> None:
         lines.append("")
 
     README_LIST_PATH.write_text("\n".join(lines), encoding="utf-8")
+    sync_readme(lines)
     print(f"Generated {len(rows)} papers")
 
 
